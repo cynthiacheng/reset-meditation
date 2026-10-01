@@ -1,0 +1,182 @@
+[
+  {
+    "id": "obs-1",
+    "category": "observation",
+    "text": "這張圖裡你第一眼注意到什麼？"
+  },
+  {
+    "id": "obs-2",
+    "category": "observation",
+    "text": "如果這張圖會動，它會往哪個方向移動？"
+  },
+  {
+    "id": "obs-3",
+    "category": "observation",
+    "text": "這張圖裡有沒有讓你覺得不尋常的地方？"
+  },
+  {
+    "id": "obs-4",
+    "category": "observation",
+    "text": "如果只能用一種顏色形容這張圖，會是什麼顏色？"
+  },
+  {
+    "id": "obs-5",
+    "category": "observation",
+    "text": "這個詞如果有形狀，會是什麼形狀？"
+  },
+  {
+    "id": "obs-6",
+    "category": "observation",
+    "text": "這張圖裡，什麼東西離你最近、什麼最遠？"
+  },
+  {
+    "id": "obs-7",
+    "category": "observation",
+    "text": "如果這張圖是一個場景的一部分，前一刻發生了什麼？"
+  },
+  {
+    "id": "obs-8",
+    "category": "observation",
+    "text": "這個詞如果有溫度，是溫暖還是冰冷？"
+  },
+  {
+    "id": "obs-9",
+    "category": "observation",
+    "text": "這張圖裡，光是從哪個方向來的？"
+  },
+  {
+    "id": "fel-1",
+    "category": "feeling",
+    "text": "看到這張圖的當下，你心裡浮現的第一個感覺是什麼？"
+  },
+  {
+    "id": "fel-2",
+    "category": "feeling",
+    "text": "這個詞讓你想到什麼情緒？"
+  },
+  {
+    "id": "fel-3",
+    "category": "feeling",
+    "text": "如果這個感覺有聲音，會是什麼聲音？"
+  },
+  {
+    "id": "fel-4",
+    "category": "feeling",
+    "text": "這張圖讓你覺得放鬆，還是有點緊繃？"
+  },
+  {
+    "id": "fel-5",
+    "category": "feeling",
+    "text": "這個詞帶給你的感覺，比較靠近喜悅還是不安？"
+  },
+  {
+    "id": "fel-6",
+    "category": "feeling",
+    "text": "如果現在身體有個部位在回應這個詞，會是哪裡？"
+  },
+  {
+    "id": "fel-7",
+    "category": "feeling",
+    "text": "這個感覺，你最近一次有類似的感受是什麼時候？"
+  },
+  {
+    "id": "fel-8",
+    "category": "feeling",
+    "text": "如果可以為這個感覺取個名字，你會怎麼叫它？"
+  },
+  {
+    "id": "fel-9",
+    "category": "feeling",
+    "text": "這張圖帶來的感覺，是想靠近還是想後退？"
+  },
+  {
+    "id": "con-1",
+    "category": "connection",
+    "text": "這個詞讓你想到生活中的哪件事？"
+  },
+  {
+    "id": "con-2",
+    "category": "connection",
+    "text": "這張圖讓你想起哪個人、或哪段關係？"
+  },
+  {
+    "id": "con-3",
+    "category": "connection",
+    "text": "最近有沒有什麼情況，和這張圖給你的感覺很像？"
+  },
+  {
+    "id": "con-4",
+    "category": "connection",
+    "text": "這個詞跟你最近在意的某件事，有什麼關聯？"
+  },
+  {
+    "id": "con-5",
+    "category": "connection",
+    "text": "如果這張圖是你某個階段的寫照，會是哪個階段？"
+  },
+  {
+    "id": "con-6",
+    "category": "connection",
+    "text": "這個詞，讓你想到自己身上的哪個部分？"
+  },
+  {
+    "id": "con-7",
+    "category": "connection",
+    "text": "最近有沒有一件事，讓你也有類似的感覺？"
+  },
+  {
+    "id": "con-8",
+    "category": "connection",
+    "text": "這張圖或這個詞，會不會讓你想到一段還沒說出口的話？"
+  },
+  {
+    "id": "con-9",
+    "category": "connection",
+    "text": "如果要把這個詞送給最近的自己，你會附上什麼話？"
+  },
+  {
+    "id": "act-1",
+    "category": "action",
+    "text": "今天可以做的一個小行動是什麼？"
+  },
+  {
+    "id": "act-2",
+    "category": "action",
+    "text": "如果只能做一件小事來回應這張卡，你會做什麼？"
+  },
+  {
+    "id": "act-3",
+    "category": "action",
+    "text": "有沒有一個一分鐘就能完成的小步驟，呼應這張卡？"
+  },
+  {
+    "id": "act-4",
+    "category": "action",
+    "text": "這張卡如果是一個提醒，它在提醒你去做什麼？"
+  },
+  {
+    "id": "act-5",
+    "category": "action",
+    "text": "明天早上醒來，你可以為這張卡做的第一件小事是什麼？"
+  },
+  {
+    "id": "act-6",
+    "category": "action",
+    "text": "如果要放下什麼，才能往這張卡的方向前進，那會是什麼？"
+  },
+  {
+    "id": "act-7",
+    "category": "action",
+    "text": "這張卡想邀請你「多做一點」還是「少做一點」什麼？"
+  },
+  {
+    "id": "act-8",
+    "category": "action",
+    "text": "有沒有一句話，是你今天想對自己說的？"
+  },
+  {
+    "id": "act-9",
+    "category": "action",
+    "text": "如果今天只完成一件事就足夠了，會是什麼事？"
+  }
+]

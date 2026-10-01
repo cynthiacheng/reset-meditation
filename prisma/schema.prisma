@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model ManagedUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model MeditationTheme {
+  id          String            @id
+  themeName   String
+  emoji       String
+  description String
+  sortOrder   Int               @default(0)
+  createdAt   DateTime          @default(now())
+  videos      MeditationVideo[]
+}
+
+enum MeditationSourceType {
+  youtube
+  upload
+}
+
+model MeditationVideo {
+  id          String               @id @default(cuid())
+  themeId     String
+  theme       MeditationTheme      @relation(fields: [themeId], references: [id], onDelete: Cascade)
+  sourceType  MeditationSourceType
+  youtubeId   String?
+  audioUrl    String?
+  title       String
+  durationMin Int
+  sortOrder   Int                  @default(0)
+  createdAt   DateTime             @default(now())
+
+  @@index([themeId])
+}

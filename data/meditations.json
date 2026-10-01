@@ -1,0 +1,58 @@
+[
+  {
+    "themeId": "sleep",
+    "themeName": "一聽就睡",
+    "emoji": "🌙",
+    "description": "放下思緒，讓聲音帶你緩緩入眠。",
+    "videos": [{ "youtubeId": "", "title": "", "durationMin": 15 }]
+  },
+  {
+    "themeId": "before-meeting",
+    "themeName": "開會前三分鐘",
+    "emoji": "🍵",
+    "description": "三分鐘收回焦點，帶著清晰走進會議室。",
+    "videos": [{ "youtubeId": "", "title": "", "durationMin": 3 }]
+  },
+  {
+    "themeId": "before-presentation",
+    "themeName": "上台報告不腿軟",
+    "emoji": "🎤",
+    "description": "穩定呼吸，讓自信先上場。",
+    "videos": [{ "youtubeId": "", "title": "", "durationMin": 5 }]
+  },
+  {
+    "themeId": "focus-boost",
+    "themeName": "專注力充電站",
+    "emoji": "🔋",
+    "description": "重新聚焦，把渙散的注意力找回來。",
+    "videos": [{ "youtubeId": "", "title": "", "durationMin": 10 }]
+  },
+  {
+    "themeId": "money-flow",
+    "themeName": "金錢流動",
+    "emoji": "💰",
+    "description": "鬆開對金錢的緊繃，迎接豐盛流動。",
+    "videos": [{ "youtubeId": "", "title": "", "durationMin": 12 }]
+  },
+  {
+    "themeId": "attract-connections",
+    "themeName": "吸引貴人",
+    "emoji": "🌟",
+    "description": "打開心的頻率，遇見對的人。",
+    "videos": [{ "youtubeId": "", "title": "", "durationMin": 12 }]
+  },
+  {
+    "themeId": "lunch-recharge",
+    "themeName": "午休快充",
+    "emoji": "☀️",
+    "description": "閉上眼十分鐘，下午滿血回歸。",
+    "videos": [{ "youtubeId": "", "title": "", "durationMin": 10 }]
+  },
+  {
+    "themeId": "power-down",
+    "themeName": "下班斷電",
+    "emoji": "🌆",
+    "description": "把工作留在門外，允許自己好好休息。",
+    "videos": [{ "youtubeId": "", "title": "", "durationMin": 15 }]
+  }
+]
