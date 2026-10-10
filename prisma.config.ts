@@ -1,4 +1,4 @@
-import { defineConfig, env } from "prisma/config";
+import { defineConfig } from "prisma/config";
 
 // Next.js loads .env.local itself, but the Prisma CLI (generate/migrate) only
 // reads .env by default — load .env.local explicitly so both share one file.
@@ -11,7 +11,8 @@ try {
 export default defineConfig({
   schema: "prisma/schema.prisma",
   datasource: {
-    url: env("DATABASE_URL"),
+    // `prisma generate` doesn't connect, so don't fail builds when the var is absent.
+    url: process.env.DATABASE_URL ?? "postgresql://unset:unset@localhost:5432/unset",
   },
   migrations: {
     seed: "tsx prisma/seed.ts",
