@@ -4,12 +4,36 @@ import { useRef, useState } from "react";
 import { upload } from "@vercel/blob/client";
 import { addYoutubeVideoAction, addUploadVideoAction } from "./actions";
 
+function readAudioDurationSeconds(file: File): Promise<number | null> {
+  return new Promise((resolve) => {
+    const url = URL.createObjectURL(file);
+    const audio = new Audio();
+    const finish = (value: number | null) => {
+      URL.revokeObjectURL(url);
+      resolve(value);
+    };
+    audio.preload = "metadata";
+    audio.onloadedmetadata = () =>
+      finish(Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : null);
+    audio.onerror = () => finish(null);
+    audio.src = url;
+  });
+}
+
+function formatDuration(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = Math.round(seconds % 60);
+  return m > 0 ? `${m} 分 ${s} 秒` : `${s} 秒`;
+}
+
 export function VideoForm({ themeId }: { themeId: string }) {
   const [mode, setMode] = useState<"youtube" | "upload">("youtube");
   const [uploading, setUploading] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [durationSec, setDurationSec] = useState<number | null>(null);
+  const [durationUnknown, setDurationUnknown] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -18,7 +42,12 @@ export function VideoForm({ themeId }: { themeId: string }) {
     setUploading(true);
     setAudioUrl(null);
     setUploadError(null);
+    setDurationSec(null);
+    setDurationUnknown(false);
     try {
+      const seconds = await readAudioDurationSeconds(file);
+      setDurationSec(seconds);
+      setDurationUnknown(seconds === null);
       const blob = await upload(file.name, file, {
         access: "public",
         handleUploadUrl: "/api/admin/blob-upload",
@@ -42,12 +71,17 @@ export function VideoForm({ themeId }: { themeId: string }) {
     } else {
       if (!audioUrl) return;
       formData.set("audioUrl", audioUrl);
+      if (durationSec !== null) {
+        formData.set("durationMin", String(Math.max(1, Math.round(durationSec / 60))));
+      }
       await addUploadVideoAction(formData);
     }
     formRef.current?.reset();
     setAudioUrl(null);
     setFileName(null);
     setUploadError(null);
+    setDurationSec(null);
+    setDurationUnknown(false);
   }
 
   return (
@@ -75,7 +109,9 @@ export function VideoForm({ themeId }: { themeId: string }) {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-[2fr_1fr_80px_auto]">
+      <div className={`grid grid-cols-1 gap-2 ${
+        mode === "youtube" || durationUnknown ? "sm:grid-cols-[2fr_1fr_80px_auto]" : "sm:grid-cols-[2fr_1fr_auto]"
+      }`}>
         {mode === "youtube" ? (
           <input
             name="youtubeId"
@@ -94,9 +130,15 @@ export function VideoForm({ themeId }: { themeId: string }) {
               />
               {uploading ? <span className="text-xs text-slate-400">上傳中…</span> : null}
               {audioUrl && fileName ? (
-                <span className="text-xs text-green-600">已上傳：{fileName}</span>
+                <span className="text-xs text-green-600">
+                  已上傳：{fileName}
+                  {durationSec !== null ? `（長度 ${formatDuration(durationSec)}）` : ""}
+                </span>
               ) : null}
             </div>
+            {durationUnknown && audioUrl ? (
+              <span className="text-xs text-amber-600">讀不到這個檔案的長度，請在右邊手動填分鐘數。</span>
+            ) : null}
             {uploadError ? (
               <span className="text-xs text-red-600">
                 上傳失敗：{uploadError}（請確認是音訊檔案，支援 mp3、wav、m4a、ogg、webm 等格式）
@@ -110,14 +152,16 @@ export function VideoForm({ themeId }: { themeId: string }) {
           required
           className="rounded-md border border-slate-300 px-3 py-2 text-sm"
         />
-        <input
-          name="durationMin"
-          type="number"
-          min={1}
-          placeholder="分鐘"
-          required
-          className="rounded-md border border-slate-300 px-3 py-2 text-sm"
-        />
+        {mode === "youtube" || durationUnknown ? (
+          <input
+            name="durationMin"
+            type="number"
+            min={1}
+            placeholder="分鐘"
+            required
+            className="rounded-md border border-slate-300 px-3 py-2 text-sm"
+          />
+        ) : null}
         <button
           type="submit"
           disabled={mode === "upload" && (!audioUrl || uploading)}

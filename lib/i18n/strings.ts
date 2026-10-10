@@ -16,7 +16,7 @@ const strings = {
     meditation: "冥想",
     innerDialogue: "內在對話",
     cards: "潛意識指引",
-    journal: "我的紀錄",
+    journal: "成長歷程",
   },
   login: {
     title: "歡迎回來",
@@ -124,7 +124,7 @@ const strings = {
     yourQuestion: "你的提問",
   },
   journal: {
-    pageTitle: "我的紀錄",
+    pageTitle: "成長歷程",
     pageDescription: "回顧冥想、內在對話與抽卡的每一步。",
     gratitudeLabel: "感恩日記",
     empty: "還沒有任何紀錄，去試試三個功能吧。",
