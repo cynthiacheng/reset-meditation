@@ -47,6 +47,18 @@ const strings = {
     tabFreeTalk: "自由傾訴",
     tabGratitude: "感恩日記",
   },
+  export: {
+    toggle: "批量匯出紀錄（.txt）",
+    kindLabel: "要匯出的內容",
+    from: "從",
+    to: "到",
+    rangeHint: "日期留空代表不限制，兩個都留空就匯出全部。",
+    download: "下載 .txt",
+    noKind: "請至少選一種內容。",
+    badRange: "起始日期不能晚於結束日期。",
+    empty: "這個範圍內沒有紀錄。",
+    done: "已下載",
+  },
   gratitude: {
     intro: "這裡可以隨口記下每天感恩的 3 件事。",
     placeholder: "今天感恩的 3 件事，用說的或寫的都可以……",

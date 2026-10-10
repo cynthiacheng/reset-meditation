@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { BrainDumpForm } from "./BrainDumpForm";
 import { GratitudeForm } from "./GratitudeForm";
+import { ExportPanel } from "./ExportPanel";
 import { t } from "@/lib/i18n/strings";
 
 type Tab = "free" | "gratitude";
@@ -45,6 +46,7 @@ export function InnerDialogueTabs() {
       ) : (
         <GratitudeForm />
       )}
+      <ExportPanel />
     </div>
   );
 }
