@@ -26,6 +26,12 @@ export function TimelineItem({
         {entry.kind === "brain-dump" && (
           <p className="mt-1 truncate text-sm text-ink dark:text-cream">{entry.text}</p>
         )}
+        {entry.kind === "gratitude" && (
+          <p className="mt-1 text-sm text-ink dark:text-cream">
+            <span className="text-ink/50 dark:text-cream/50">{t("journal.gratitudeLabel")} · </span>
+            {entry.text}
+          </p>
+        )}
         {entry.kind === "card" && (
           <p className="mt-1 text-sm text-ink dark:text-cream">
             {entry.wordText}

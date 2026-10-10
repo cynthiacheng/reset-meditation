@@ -1,5 +1,6 @@
 import { meditationRepository } from "@/lib/repositories/dexie/meditation-repository";
 import { brainDumpRepository } from "@/lib/repositories/dexie/brain-dump-repository";
+import { gratitudeRepository } from "@/lib/repositories/dexie/gratitude-repository";
 import { cardRepository } from "@/lib/repositories/dexie/card-repository";
 import { getWordCard } from "@/lib/cards";
 import { todayDateKey } from "@/lib/utils/date";
@@ -53,6 +54,12 @@ export type TimelineEntry =
       aiStatus: AiStatus;
     }
   | {
+      kind: "gratitude";
+      id: number;
+      timestamp: number;
+      text: string;
+    }
+  | {
       kind: "card";
       id: number;
       timestamp: number;
@@ -61,10 +68,11 @@ export type TimelineEntry =
     };
 
 export async function getTimelineEntries(): Promise<TimelineEntry[]> {
-  const [completions, dumps, draws] = await Promise.all([
+  const [completions, dumps, draws, gratitudes] = await Promise.all([
     meditationRepository.listCompletions(),
     brainDumpRepository.list(),
     cardRepository.list(),
+    gratitudeRepository.list(),
   ]);
 
   const meditationEntries: TimelineEntry[] = completions.map((completion) => ({
@@ -82,6 +90,13 @@ export async function getTimelineEntries(): Promise<TimelineEntry[]> {
     aiStatus: dump.aiStatus,
   }));
 
+  const gratitudeEntries: TimelineEntry[] = gratitudes.map((entry) => ({
+    kind: "gratitude",
+    id: entry.id as number,
+    timestamp: entry.createdAt,
+    text: entry.text,
+  }));
+
   const cardEntries: TimelineEntry[] = draws.map((draw) => ({
     kind: "card",
     id: draw.id as number,
@@ -90,7 +105,7 @@ export async function getTimelineEntries(): Promise<TimelineEntry[]> {
     question: draw.question,
   }));
 
-  return [...meditationEntries, ...dumpEntries, ...cardEntries].sort(
+  return [...meditationEntries, ...dumpEntries, ...gratitudeEntries, ...cardEntries].sort(
     (a, b) => b.timestamp - a.timestamp
   );
 }
@@ -100,6 +115,8 @@ export async function deleteTimelineEntry(entry: TimelineEntry): Promise<void> {
     await meditationRepository.removeCompletion(entry.id);
   } else if (entry.kind === "brain-dump") {
     await brainDumpRepository.remove(entry.id);
+  } else if (entry.kind === "gratitude") {
+    await gratitudeRepository.remove(entry.id);
   } else {
     await cardRepository.remove(entry.id);
   }

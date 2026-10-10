@@ -14,7 +14,7 @@ const strings = {
   },
   nav: {
     meditation: "冥想",
-    brainDump: "Brain dump",
+    innerDialogue: "內在對話",
     cards: "潛意識指引",
     journal: "我的紀錄",
   },
@@ -41,8 +41,21 @@ const strings = {
     backToThemes: "回到主題",
     backToVideos: "回到影片列表",
   },
+  innerDialogue: {
+    pageTitle: "內在對話",
+    pageDescription: "說給自己聽，把此刻的心情與想法都留下來。",
+    tabFreeTalk: "自由傾訴",
+    tabGratitude: "感恩日記",
+  },
+  gratitude: {
+    intro: "這裡可以隨口記下每天感恩的 3 件事。",
+    placeholder: "今天感恩的 3 件事，用說的或寫的都可以……",
+    save: "記下今天的感恩",
+    saved: "已記下，謝謝今天的美好",
+    empty: "先記下一件感恩的事吧。",
+  },
   brainDump: {
-    pageTitle: "Brain dump",
+    pageTitle: "自由傾訴",
     pageDescription: "自由抒發，把腦袋裡的想法都盡情釋放，留出一些空白的時間，不再耗竭。",
     placeholder: "想到什麼就寫下來，不用整理，先倒出來就好……",
     micStart: "開始語音輸入",
@@ -100,7 +113,8 @@ const strings = {
   },
   journal: {
     pageTitle: "我的紀錄",
-    pageDescription: "回顧冥想、書寫與抽卡的每一步。",
+    pageDescription: "回顧冥想、內在對話與抽卡的每一步。",
+    gratitudeLabel: "感恩日記",
     empty: "還沒有任何紀錄，去試試三個功能吧。",
     meditationDone: "完成冥想",
     clearAll: "清除所有本地資料",

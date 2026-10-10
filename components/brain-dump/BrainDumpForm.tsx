@@ -61,7 +61,7 @@ export function BrainDumpForm() {
     } else if (action === "md") {
       downloadTextFile(value, `reset-brain-dump-${Date.now()}.md`);
     } else if (action === "share") {
-      const ok = await shareText(value, "Reset · Brain dump");
+      const ok = await shareText(value, "Reset · 內在對話");
       if (!ok) {
         downloadTextFile(value, `reset-brain-dump-${Date.now()}.txt`);
         showStatus(t("brainDump.exportShareUnsupported"));
@@ -219,7 +219,7 @@ export function BrainDumpForm() {
           {aiState === "done" && (
             <div className="flex items-center justify-between gap-3">
               <p className="text-moss dark:text-sand">{t("brainDump.toTodoDone")}</p>
-              <Link href="/brain-dump/todos" className="shrink-0 text-xs text-ink underline dark:text-cream">
+              <Link href="/inner-dialogue/todos" className="shrink-0 text-xs text-ink underline dark:text-cream">
                 {t("brainDump.viewTodos")}
               </Link>
             </div>

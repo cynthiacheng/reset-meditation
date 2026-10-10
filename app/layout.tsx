@@ -23,7 +23,7 @@ const notoSansTC = Noto_Sans_TC({
 
 export const metadata: Metadata = {
   title: "Reset｜靜心・書寫・指引",
-  description: "為忙碌的你，留一段喘息的時間。主題式冥想、Brain dump、原創牌卡指引。",
+  description: "為忙碌的你，留一段喘息的時間。主題式冥想、內在對話、原創牌卡指引。",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,

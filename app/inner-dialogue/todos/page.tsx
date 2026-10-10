@@ -32,8 +32,8 @@ export default function TodosPage() {
   return (
     <div>
       <div className="px-6 pb-2 pt-8">
-        <Link href="/brain-dump" className="text-sm text-moss dark:text-sand">
-          ← Brain dump
+        <Link href="/inner-dialogue" className="text-sm text-moss dark:text-sand">
+          ← 內在對話
         </Link>
       </div>
       <PageHeader title={t("todos.pageTitle")} description={t("todos.pageDescription")} />

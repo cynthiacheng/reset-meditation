@@ -6,7 +6,7 @@ import { t } from "@/lib/i18n/strings";
 
 const tabs = [
   { href: "/meditations", label: t("nav.meditation") },
-  { href: "/brain-dump", label: t("nav.brainDump") },
+  { href: "/inner-dialogue", label: t("nav.innerDialogue") },
   { href: "/cards", label: t("nav.cards") },
   { href: "/journal", label: t("nav.journal") },
 ] as const;

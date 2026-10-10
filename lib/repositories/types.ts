@@ -4,6 +4,7 @@ import type {
   CardDrawRecord,
   CompletionRecord,
   DumpSource,
+  GratitudeEntryRecord,
   ItemRecord,
   ItemType,
 } from "@/lib/db";
@@ -22,6 +23,12 @@ export interface BrainDumpRepository {
   create(input: { text: string; source: DumpSource }): Promise<BrainDumpEntryRecord>;
   updateAiStatus(id: number, status: AiStatus): Promise<void>;
   list(limit?: number): Promise<BrainDumpEntryRecord[]>;
+  remove(id: number): Promise<void>;
+}
+
+export interface GratitudeRepository {
+  create(input: { text: string; source: DumpSource }): Promise<GratitudeEntryRecord>;
+  list(limit?: number): Promise<GratitudeEntryRecord[]>;
   remove(id: number): Promise<void>;
 }
 

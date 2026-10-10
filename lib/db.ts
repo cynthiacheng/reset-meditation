@@ -27,6 +27,13 @@ export interface BrainDumpEntryRecord {
   createdAt: number;
 }
 
+export interface GratitudeEntryRecord {
+  id?: number;
+  text: string;
+  source: DumpSource;
+  createdAt: number;
+}
+
 export interface ItemRecord {
   id?: number;
   type: ItemType;
@@ -54,6 +61,7 @@ class ResetDatabase extends Dexie {
   brainDumpEntries!: Table<BrainDumpEntryRecord, number>;
   items!: Table<ItemRecord, number>;
   cardDraws!: Table<CardDrawRecord, number>;
+  gratitudeEntries!: Table<GratitudeEntryRecord, number>;
 
   constructor() {
     super("reset_db");
@@ -64,6 +72,9 @@ class ResetDatabase extends Dexie {
       items: "++id, type, done, brainDumpEntryId, cardDrawId, createdAt",
       cardDraws: "++id, createdAt",
     });
+    this.version(2).stores({
+      gratitudeEntries: "++id, createdAt",
+    });
   }
 }
 
@@ -72,7 +83,7 @@ export const db = new ResetDatabase();
 export async function clearAllLocalData(): Promise<void> {
   await db.transaction(
     "rw",
-    [db.favorites, db.completions, db.brainDumpEntries, db.items, db.cardDraws],
+    [db.favorites, db.completions, db.brainDumpEntries, db.items, db.cardDraws, db.gratitudeEntries],
     async () => {
       await Promise.all([
         db.favorites.clear(),
@@ -80,6 +91,7 @@ export async function clearAllLocalData(): Promise<void> {
         db.brainDumpEntries.clear(),
         db.items.clear(),
         db.cardDraws.clear(),
+        db.gratitudeEntries.clear(),
       ]);
     }
   );
