@@ -14,6 +14,15 @@ function mapVideo(
   };
 }
 
+// Route params arrive percent-encoded, which matters for theme ids that contain Chinese characters.
+export function decodeRouteParam(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
 export async function getThemes(): Promise<MeditationTheme[]> {
   const themes = await prisma.meditationTheme.findMany({
     orderBy: { sortOrder: "asc" },

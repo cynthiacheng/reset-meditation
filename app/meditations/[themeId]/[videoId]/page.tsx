@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getVideo } from "@/lib/meditations";
+import { decodeRouteParam, getVideo } from "@/lib/meditations";
 import { PlayerControls } from "@/components/meditation/PlayerControls";
 import { t } from "@/lib/i18n/strings";
 
@@ -11,7 +11,8 @@ export default async function VideoPlayerPage({
 }: {
   params: Promise<{ themeId: string; videoId: string }>;
 }) {
-  const { themeId, videoId } = await params;
+  const { themeId: rawThemeId, videoId } = await params;
+  const themeId = decodeRouteParam(rawThemeId);
   const result = await getVideo(themeId, videoId);
   if (!result) notFound();
   const { theme, video } = result;

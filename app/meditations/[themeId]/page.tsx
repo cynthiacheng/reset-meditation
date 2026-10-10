@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getTheme } from "@/lib/meditations";
+import { decodeRouteParam, getTheme } from "@/lib/meditations";
 import { VideoListItem } from "@/components/meditation/VideoListItem";
 import { t } from "@/lib/i18n/strings";
 
@@ -11,8 +11,8 @@ export default async function ThemeVideosPage({
 }: {
   params: Promise<{ themeId: string }>;
 }) {
-  const { themeId } = await params;
-  const theme = await getTheme(themeId);
+  const { themeId: rawThemeId } = await params;
+  const theme = await getTheme(decodeRouteParam(rawThemeId));
   if (!theme) notFound();
 
   const playableVideos = theme.videos;
